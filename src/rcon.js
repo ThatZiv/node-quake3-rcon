@@ -226,7 +226,8 @@ const RCon = function (_CONFIG) {
         // setup check for timeout
         connectTimeout = setTimeout(() => {
             connection.close();
-            throw 'connection.send TIMEOUT';
+            //throw 'connection.send TIMEOUT';
+            //i honestly don't know how to handle the error above so i just got rid of it
         }, timeoutMilliSecs);
 
         // and finally send the command
