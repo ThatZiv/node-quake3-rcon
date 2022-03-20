@@ -210,10 +210,11 @@ const RCon = function (_CONFIG) {
             if (!isFunction(onSendCallback)) {
                 connection.close();
             }
-            // TODO: handle/catch?
+            // TODO: handle/catch? <- good enough.
             if (error) {
                 connection.close();
-                throw error;
+                responseBuffer = "connection.send FAILED"
+                //throw error;
             }
         }
 
@@ -226,6 +227,7 @@ const RCon = function (_CONFIG) {
         // setup check for timeout
         connectTimeout = setTimeout(() => {
             connection.close();
+            responseBuffer = "connection.send TIMEOUT"
             //throw 'connection.send TIMEOUT';
             //i honestly don't know how to handle the error above so i just got rid of it
         }, timeoutMilliSecs);
